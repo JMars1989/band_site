@@ -1,0 +1,59 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  title Forming the Void
+  // -CDN Links
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+div(style='background-color: black;color:silver;')
+  link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Julius+Sans+One|Mirza|Raleway&display=swap')
+  style.
+    body { font-family: "Julius Sans One";}
+  header
+    nav.navbar.navbar-expand.navbar-light.bg-light(role='navigation')
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li
+            a.nav-link(href='/') Home
+          li
+            a.nav-link(href='/press') Press
+          li.active
+            a.nav-link(href='/contact')
+              | Contact
+              span.sr-only (current)
+        ul.navbar-nav
+          li.nav
+            a.navbar-brand.nav-link(href='https://open.spotify.com/artist/4VSEqckiFLO2SOuSKAlXTv' target='_blank')
+              img(src='sites/spotifyCircle.jpg' alt='' style='width:25px;')
+          li.nav
+            a.navbar-brand.nav-link(href='https://www.youtube.com/watch?v=cLUvtkiaZFA' target='_blank')
+              img(src='sites/YT.png' alt='' style='width:25px;')
+          li.nav
+            a.navbar-brand.nav-link(href='https://www.facebook.com/formingthevoid/' target='_blank')
+              img(src='sites/FB.png' alt='' style='width:25px;')
+          li.nav
+            a.navbar-brand.nav-link(href='https://www.instagram.com/forming_the_void/?hl=en' target='_blank')
+              img(src='sites/insta.png' alt='' style='width:25px;')
+  .container
+    .row
+      .col.mt-5.mb-5
+        h1.display-4.text-center Contact Us
+        h1.display-3.text-center= contactSuccess
+        form#contact-form(action='/contact' method='post' role='form')
+          .form-group
+            fieldset
+              label(for='name') Name *
+              input#name.form-control(name='name' type='text' placeholder='Your name' required='required')
+          .form-group
+            label(for='email') Email *
+            input#email.form-control(name='email' type='text' placeholder='Your email' required='required')
+          .form-group
+            label(for='message') Message *
+            textarea#message.form-control(name='message' placeholder='Enter your message here' rows='3' required='required')
+          .pb-2
+            button.btn.btn-dark(type='submit') Submit
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+  script(src='website.js')

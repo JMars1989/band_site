@@ -1,0 +1,149 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  title Forming the Void
+  // -CDN Links
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+  link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Julius+Sans+One|Mirza|Raleway&display=swap')
+style.
+  body { font-family: "Julius Sans One";}
+header
+  nav.navbar.navbar-expand.navbar-light.bg-light(role='navigation')
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.active
+          a.nav-link(href='/')
+            | Home
+            span.sr-only (current)
+        li
+          a.nav-link(href='/press') Press
+        li
+          a.nav-link(href='/contact') Contact
+      ul.navbar-nav
+        li.nav
+          a.navbar-brand.nav-link(href='https://open.spotify.com/artist/4VSEqckiFLO2SOuSKAlXTv' target='_blank')
+            img(src='sites/spotifyCircle.jpg' alt='' style='width:25px;')
+        li.nav
+          a.navbar-brand.nav-link(href='https://www.youtube.com/watch?v=cLUvtkiaZFA' target='_blank')
+            img(src='sites/YT.png' alt='' style='width:25px;')
+        li.nav
+          a.navbar-brand.nav-link(href='https://www.facebook.com/formingthevoid/' target='_blank')
+            img(src='sites/FB.png' alt='' style='width:25px;')
+        li.nav
+          a.navbar-brand.nav-link(href='https://www.instagram.com/forming_the_void/?hl=en' target='_blank')
+            img(src='sites/insta.png' alt='' style='width:25px;')
+div(style='background-color: black;')
+  .container-fluid
+    .row
+      .col-md-8.col-lg-7.col-xl-7.mx-auto
+        img.img-fluid(src='logoPic.png' alt='pics')
+  .container.text-center.pt-5
+    .row
+      .col
+        .embed-responsive.embed-responsive-16by9
+          iframe.embed-responsive(src='https://www.youtube.com/embed/cLUvtkiaZFA' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+  script.
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+    // Typical action to be performed when the document is ready:
+    var obj = JSON.parse(this.responseText);
+    for (var i = 0; i < obj.length; i++) {
+    var day = new Date(obj[i].datetime);
+    day.toDateString();
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let day2 = `${days[day.getDay()]}, ${months[day.getMonth()]} ${day.getDate()}`;
+    obj[i].datetime = day2;
+    }
+    txt = '';
+    for (var i = 0; i < obj.length; i++) {
+    txt += '<tr><td>' + obj[i].datetime + '</td><td>' + obj[i].venue.city + ', ';
+    if (obj[i].venue.region) {
+    txt += obj[i].venue.region;
+    } else {
+    txt += obj[i].venue.country;
+    }
+    txt += '</td><td><a href="' + obj[i].url + '">' + obj[i].venue.name + '</a></td><tr>';
+    }
+    document.getElementById("shows").innerHTML = txt;
+    }
+    };
+    xhttp.open("GET", "https://rest.bandsintown.com/artists/formingthevoid/events?app_id=13706c200eb9a2e94dde6d6e2ffd999a&date=upcoming", true);
+    xhttp.send();
+  .container-fluid(class='> <div class=')
+    .col-md-7.mx-auto.text-center
+      h2.display-4(style='color: #004d99;') Upcoming Shows
+      table.table.text-center.table-dark
+        tbody#shows
+  .album(style='background-color: black;')
+    .container-fluid
+      h1.display-4.text-center(style='color: #004d99;') Albums
+      .row
+        .col-md-4
+          .card.mb-4.shadow-sm
+            img.bd-placeholder-img.card-img-top(src='skyward.jpg')
+            .card-body
+              .d-flex.justify-content-between.aligns-center
+                iframe(style='border: 0; width: 100%; height: 307px;' src='https://bandcamp.com/EmbeddedPlayer/album=3399954694/size=large/bgcol=333333/linkcol=0f91ff/artwork=none/transparent=true/' seamless='')
+                  a(href='http://formingthevoid.bandcamp.com/album/skyward')
+                    | Skyward by
+                    | Forming the Void
+        .col-md-4
+          .card.mb-4.shadow-sm
+            img.bd-placeholder-img.card-img-top(src='relic.jpg')
+            .card-body
+              .d-flex.justify-content-between.aligns-center
+                iframe(style='border: 0; width: 100%; height: 406px;' src='https://bandcamp.com/EmbeddedPlayer/album=1034333834/size=large/bgcol=333333/linkcol=0f91ff/artwork=none/transparent=true/' seamless='')
+                  a(href='http://formingthevoid.bandcamp.com/album/relic')
+                    | Relic by
+                    | Forming the Void
+        .col-md-4
+          .card.shadow-sm
+            img.bd-placeholder-img.card-img-top(src='rift.png')
+            .card-body
+              .d-flex.justify-content-between.aligns-center
+                iframe(style='border: 0; width: 100%; height: 373px;' src='https://bandcamp.com/EmbeddedPlayer/album=2696210395/size=large/bgcol=333333/linkcol=0f91ff/artwork=none/transparent=true/' seamless='')
+                  a(href='http://formingthevoid.bandcamp.com/album/rift')
+                    | Rift by Forming
+                    | the Void
+  script(type='text/javascript').
+    $(document).ready(function () {
+    $('#user-submit').click(function () {
+    var payload = {
+    name: $('#user-name').val()
+    };
+    $.ajax({
+    url: "/users",
+    type: "POST",
+    contentType: "application/json",
+    processData: false,
+    data: JSON.stringify(payload),
+    complete: function (data) {
+    $('#output').html(data.responseText);
+    }
+    });
+    });
+    });
+  .container
+    .row
+      .col.mt-2
+        // <form action="/contact" id="contact-form" method="post" role="form">
+        form#contact-form.form-inline.mb-5(method='post' role='form')
+          h3.display-5.text-center.my-auto(style='color: #004d99;')
+            | Subscribe to our email list!
+          .form-group.pl-2
+            label(for='name')
+            input#name.form-control(name='name' type='text' placeholder='Your name' required='required')
+          .form-group
+            label(for='email')
+            input#email.form-control(name='email' type='text' placeholder='Your email' required='required')
+          div
+            button.btn.btn-dark(type='submit') Submit
+
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+script(src='website.js')
+
